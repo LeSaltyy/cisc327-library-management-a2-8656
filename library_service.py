@@ -159,9 +159,9 @@ def calculate_late_fee_for_book(patron_id: str, book_id: int) -> Dict:
     fee_amount = 0.0
     if (days_late > 0):
         if days_late <= 7:
-            fee_amount = 7*0.50
+            fee_amount = days_late * 0.50 
         else:
-            fee_amount = max(7*0.50 + (days_late - 7) *1.00, 15)
+            fee_amount = min(7 * 0.50 + (days_late - 7) * 1.00, 15) 
     
     return {
         "fee_amount": fee_amount,
@@ -173,6 +173,7 @@ def search_books_in_catalog(search_term: str, search_type: str) -> List[Dict]:
     if not search_term or not search_term.strip():
         return []
     if search_type not in ["title", "author", "isbn"]:
+        print("search type doesnt exist")
         return []
 
     search_results = []
@@ -182,11 +183,11 @@ def search_books_in_catalog(search_term: str, search_type: str) -> List[Dict]:
             if search_term == book["isbn"]:
                 search_results.append(dict(book))
         else:
+            search_term = search_term.strip().lower()
             if search_term in book[search_type].lower():
                 search_results.append(dict(book))
 
     return search_results
-
 
 
 def get_patron_status_report(patron_id: str) -> dict:
