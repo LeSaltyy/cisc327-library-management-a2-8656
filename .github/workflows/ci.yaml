@@ -39,6 +39,3 @@ jobs:
 
       - name: Run tests
         run: pytest --cov --cov-branch --cov-report=xml
-
-      - name: Run tests
-        run: pytest -v
