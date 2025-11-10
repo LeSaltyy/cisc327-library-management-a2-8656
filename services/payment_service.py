@@ -5,7 +5,7 @@ This module simulates integration with an external payment processing API.
 For Assignment 3: You will learn to mock this service in their tests
 since we cannot make actual payment API calls during testing.
 """
-
+import requests
 from typing import Dict, Tuple
 import time
 

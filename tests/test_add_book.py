@@ -1,5 +1,4 @@
 import pytest
-import sys
 from services.library_service import add_book_to_catalog
 
 from database import reset_database  
