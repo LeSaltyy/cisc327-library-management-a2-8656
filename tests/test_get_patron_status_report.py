@@ -1,7 +1,7 @@
 import pytest
-from library_service import insert_borrow_record
+from services.library_service import insert_borrow_record
 from datetime import datetime, timedelta
-from library_service import get_patron_status_report, borrow_book_by_patron, add_book_to_catalog
+from services.library_service import get_patron_status_report, borrow_book_by_patron, add_book_to_catalog
 
 def setup_module(module):
     add_book_to_catalog("History Book", "Author", "3333333333333", 3)

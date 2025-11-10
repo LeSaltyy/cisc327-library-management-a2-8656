@@ -1,5 +1,5 @@
 import pytest
-from library_service import borrow_book_by_patron, add_book_to_catalog
+from services.library_service import borrow_book_by_patron, add_book_to_catalog
 
 def setup_module(module):
     # Ensure a test book exists
@@ -61,7 +61,7 @@ def test_borrow_after_return():
     # Borrow a book, simulate return, then borrow again
     borrow_book_by_patron("123456", 1)
     # Assume return_book_by_patron exists
-    from library_service import return_book_by_patron
+    from services.library_service import return_book_by_patron
     return_book_by_patron("123456", 1)
     success, message = borrow_book_by_patron("123456", 1)
     assert success is True

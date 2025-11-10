@@ -3,7 +3,7 @@ Patron Routes - Patron related endpoints
 """
 
 from flask import Blueprint, render_template, request, flash
-from library_service import get_patron_status_report
+from services.library_service import get_patron_status_report
 
 # Define blueprint for patron-related routes
 patron_bp = Blueprint('patron', __name__)

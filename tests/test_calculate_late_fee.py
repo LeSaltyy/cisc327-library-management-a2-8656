@@ -1,5 +1,5 @@
 import pytest
-from library_service import calculate_late_fee_for_book, borrow_book_by_patron, add_book_to_catalog, return_book_by_patron, insert_borrow_record
+from services.library_service import calculate_late_fee_for_book, borrow_book_by_patron, add_book_to_catalog, return_book_by_patron, insert_borrow_record
 from datetime import timedelta, datetime
 
 def setup_module(module):
@@ -23,7 +23,7 @@ def test_fee_invalid_patron():
 
 def test_fee_one_day_late():
     from database import get_book_by_isbn
-    from library_service import add_book_to_catalog
+    from services.library_service import add_book_to_catalog
     
     success, msg = add_book_to_catalog("Late Fee Test Book", "Test Author", "9999999999996", 1)
     assert success
@@ -40,7 +40,7 @@ def test_fee_one_day_late():
 
 def test_fee_seven_days_late():
     from database import get_book_by_isbn
-    from library_service import add_book_to_catalog
+    from services.library_service import add_book_to_catalog
     
     success, msg = add_book_to_catalog("Seven Days Late Book", "Test Author", "9999999999997", 1)
     assert success
@@ -57,7 +57,7 @@ def test_fee_seven_days_late():
 
 def test_fee_more_than_seven_days_under_max():
     from database import get_book_by_isbn
-    from library_service import add_book_to_catalog
+    from services.library_service import add_book_to_catalog
     
     success, msg = add_book_to_catalog("Eight Days Late Book", "Test Author", "9999999999998", 1)
     assert success
@@ -74,7 +74,7 @@ def test_fee_more_than_seven_days_under_max():
 
 def test_fee_exceeds_maximum():
     from database import get_book_by_isbn
-    from library_service import add_book_to_catalog
+    from services.library_service import add_book_to_catalog
     
     success, msg = add_book_to_catalog("Max Fee Book", "Test Author", "9999999999999", 1)
     assert success

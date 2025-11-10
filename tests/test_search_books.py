@@ -1,10 +1,11 @@
 import pytest
-from library_service import search_books_in_catalog, add_book_to_catalog, get_all_books
+from services.library_service import search_books_in_catalog, add_book_to_catalog, get_all_books
 
 def setup_module(module):
     add_book_to_catalog("Searchable Book", "AuthorX", "9999999999991", 1)
     add_book_to_catalog("Another Book", "AuthorY", "9999999999992", 1) 
     add_book_to_catalog("Test Book", "AuthorZ", "9999999999993", 1)
+
 
 def test_search_by_title():
     results = search_books_in_catalog("Book A", "title")

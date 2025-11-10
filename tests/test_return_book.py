@@ -1,5 +1,5 @@
 import pytest
-from library_service import return_book_by_patron, borrow_book_by_patron, add_book_to_catalog
+from services.library_service import return_book_by_patron, borrow_book_by_patron, add_book_to_catalog
 
 def setup_module(module):
     add_book_to_catalog("Returnable Book", "Author", "2222222222222", 2)
